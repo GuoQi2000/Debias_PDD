@@ -1,0 +1,46 @@
+loss: ce 
+
+
+# model and folder
+base_folder: exp_mnli_debiased
+tokenizer: auto
+bert_version: bert-base-uncased 
+rep: pooler
+max_length: 128 # Tokenizer max_length
+feature_dim: 768 
+out_dim: 3 
+
+
+# training
+batch_size: 32
+lr: 2.0e-05 # bert和mlp使用相同的lr
+cuda: 7 # 所用GPU编号
+data: mnli_debiased # 数据集
+debug: 0 # 是否调试; debug = 1的话会对训练集进行采样
+drop_out: 0.0
+epochs: 5
+weight_decay: 0.01
+
+init: gauss0.02 # choose from [xavier, gauss0.02], MLP的参数初始化
+max_grad_norm: -1 # 是否在optimizer.step前截断梯度, -1 表示不截断
+
+scheduler: warmuplinear # 学习率调整策略, 
+seed: 21
+warmup_steps: 2000
+warmup_proportion: 0.1 # warmup的比例
+
+
+
+shuffle_times: 
+shuffle_which: both 
+ent_alpha: 1.0
+
+# debias 
+n_gram: 1
+
+alpha: 1.0
+gamma: 2.0
+
+poe_alpha: 1.0
+clip: 0.01
+
