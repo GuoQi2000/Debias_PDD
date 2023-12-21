@@ -1,4 +1,4 @@
-# Shuffle Debias
+# PDD
 This is the github repository for Findings of EMNLP 2023 paper **"Debias NLU Datasets via Training-free Perturbations"**.
 
 ## Data
